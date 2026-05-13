@@ -1,4 +1,4 @@
-Um comparador de preços de jogos digitais com foco em experiência moderna, performance e integração com IA.
+Um comparador de preços de jogos digitais com foco em experiência moderna e performance
 O projeto busca jogos em múltiplas lojas digitais, compara preços automaticamente e destaca a melhor oferta disponível.
 ---
 
