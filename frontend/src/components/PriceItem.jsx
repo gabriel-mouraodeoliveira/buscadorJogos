@@ -29,7 +29,7 @@ export default function PriceItem({
         )
       : 0;
 
-  // 💰 formatador BRL
+  // 💰 formatador moeda brasileira BRL
   const formatPrice = value => {
     return `R$ ${value.toFixed(2)}`;
   };
