@@ -1,7 +1,7 @@
 import { getSteamGame } from "../services/steamService.js";
 import { getCheapSharkDeals } from "../services/cheapsharkService.js";
 import { findBestDeals } from "../utils/matchGames.js";
-import cache from "../utils/cache.js";
+import redisClient from "../utils/redisClient.js";
 
 export async function getGames(req, res) {
   const { name } = req.query;
@@ -10,13 +10,14 @@ export async function getGames(req, res) {
   const cacheKey = name.toLowerCase();
 
   // 🔍 verificar cache
-  const cached = cache.get(cacheKey);
+const cached =
+  await redisClient.get(cacheKey);
 
-  if (cached) {
-    console.log("⚡ CACHE HIT");
+if (cached) {
+  console.log("⚡ REDIS CACHE HIT");
 
-    return res.json(cached);
-  }
+  return res.json(JSON.parse(cached));
+}
 
   try {
     // 🔄 buscar APIs em paralelo
@@ -102,7 +103,13 @@ export async function getGames(req, res) {
     }
 
     // ⚡ salvar cache
-    cache.set(cacheKey, results);
+    await redisClient.set(
+      cacheKey,
+      JSON.stringify(results),
+      {
+        EX: 60 * 60, // 1 hora
+      }
+    );
 
     res.json(results);
 
