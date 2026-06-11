@@ -182,3 +182,118 @@
     border-right-color: var(--border);
   }
 }
+
+.salesdeal-bg {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(168, 85, 247, 0.20),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(34, 211, 238, 0.15),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      #0a0f1f,
+      #111827,
+      #080b14
+    );
+}
+
+.salesdeal-bg::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,0.02) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,0.02) 1px,
+      transparent 1px
+    );
+
+  background-size: 50px 50px;
+
+  pointer-events: none;
+}
+/* .salesdeal-bg {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(168, 85, 247, 0.20),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(34, 211, 238, 0.15),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      #0a0f1f,
+      #111827,
+      #080b14
+    );
+
+  position: relative;
+} */
+
+/* .salesdeal-bg::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 50px 50px;
+
+  pointer-events: none;
+  z-index: 0;
+} */
+
+
+
+
+/* .salesdeal-bg {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(168, 85, 247, 0.2),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(34, 211, 238, 0.15),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      #0a0f1f,
+      #111827,
+      #080b14
+    );
+} */

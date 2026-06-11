@@ -10,7 +10,18 @@ export function findBestDeals(gameTitle, deals) {
   const results = fuse.search(gameTitle);
 
   // pegar apenas matches relevantes
-  return results
-    .filter(r => r.score <= 0.3)
-    .map(r => r.item);
+return results
+  .filter(r => {
+    const game =
+      gameTitle.toLowerCase().trim();
+
+    const title =
+      r.item.title.toLowerCase().trim();
+
+    return (
+      r.score <= 0.3 &&
+      title === game
+    );
+  })
+  .map(r => r.item);
 }

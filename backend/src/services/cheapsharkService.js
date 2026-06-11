@@ -96,3 +96,57 @@ export async function getCheapSharkDeals(name) {
     return [];
   }
 }
+
+export async function getHistoricalLowPrice(gameName) {
+  try {
+    const searchRes = await axios.get(
+      "https://www.cheapshark.com/api/1.0/games",
+      {
+        params: {
+          title: gameName,
+          limit: 1,
+        },
+      }
+    );
+
+    if (!searchRes.data.length) {
+      return null;
+    }
+
+    const gameId =
+      searchRes.data[0].gameID;
+
+    const gameRes = await axios.get(
+      "https://www.cheapshark.com/api/1.0/games",
+      {
+        params: {
+          id: gameId,
+        },
+      }
+    );
+    console.log(
+      "CHEAPSHARK GAME:",
+      JSON.stringify(
+        gameRes.data,
+        null,
+        2
+      )
+    );
+    const lowestUsd = parseFloat(
+      gameRes.data.cheapestPriceEver.price
+    );
+
+    const historicalLow =
+      await usdToBrl(lowestUsd);
+
+    return historicalLow;
+
+  } catch (err) {
+    console.error(
+      "Historical Price Error:",
+      err.message
+    );
+
+    return null;
+  }
+}
