@@ -120,7 +120,7 @@ export default function Home() {
               "
             >
               <h2 className="text-xl font-bold mb-3">
-                🤖 Deal Advisor
+                Should I buy it now?
               </h2>
 
               <div className="flex flex-col gap-2">
@@ -139,7 +139,7 @@ export default function Home() {
                     }
                   `}
                 >
-                  {dealAdvice.status.replaceAll("_", " ")}
+                  {dealAdvice?.status?.replaceAll("_", " ")}
                 </span>
 
                 <p className="text-gray-300">
